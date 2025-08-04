@@ -58,24 +58,6 @@ const FileText = ({ size = 20 }) => (
     <polyline points="10,9 9,9 8,9"></polyline>
   </svg>
 );
-
-const Sparkles = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
-    <path d="M20 3v4"/>
-    <path d="M22 5h-4"/>
-    <path d="M4 17v2"/>
-    <path d="M5 18H3"/>
-  </svg>
-);
-
-const Shield = ({ size = 20 }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
-    <path d="m9 12 2 2 4-4"/>
-  </svg>
-);
-
 interface Question {
   id: string;
   text: string;
@@ -462,234 +444,165 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
   const styles = {
     container: {
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
-      position: 'relative' as const,
-      overflow: 'hidden'
-    },
-    backgroundPattern: {
-      position: 'absolute' as const,
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundImage: `
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.1) 0%, transparent 50%)
-      `,
-      pointerEvents: 'none' as const
+      background: 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)',
+      fontFamily: 'Arial, sans-serif'
     },
     innerContainer: {
       maxWidth: '1200px',
       margin: '0 auto',
-      padding: '32px 16px',
-      position: 'relative' as const,
-      zIndex: 1
+      padding: '32px 16px'
     },
     header: {
       textAlign: 'center' as const,
-      marginBottom: '48px',
-      color: 'white'
+      marginBottom: '32px'
     },
     mainTitle: {
-      fontSize: '3.5rem',
-      fontWeight: '800',
-      background: 'linear-gradient(45deg, #ffffff, #f0f8ff)',
-      backgroundClip: 'text',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
+      fontSize: '2.5rem',
+      fontWeight: 'bold',
+      color: '#1a1a1a',
       marginBottom: '16px',
-      margin: '0 0 16px 0',
-      textShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
-      letterSpacing: '-0.02em'
+      margin: '0 0 16px 0'
     },
     subtitle: {
-      fontSize: '1.5rem',
-      color: 'rgba(255, 255, 255, 0.9)',
-      marginBottom: '12px',
-      margin: '0 0 12px 0',
-      fontWeight: '400'
+      fontSize: '1.25rem',
+      color: '#666',
+      marginBottom: '8px',
+      margin: '0 0 8px 0'
     },
     tagline: {
-      color: 'rgba(255, 255, 255, 0.7)',
-      margin: '0',
-      fontSize: '1.1rem',
-      fontStyle: 'italic',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px'
+      color: '#888',
+      margin: '0'
     },
     progressCard: {
-      backgroundColor: 'rgba(255, 255, 255, 0.15)',
-      backdropFilter: 'blur(20px)',
-      borderRadius: '20px',
-      padding: '24px',
+      backgroundColor: 'white',
+      borderRadius: '8px',
+      padding: '16px',
       marginBottom: '32px',
-      border: '1px solid rgba(255, 255, 255, 0.2)',
-      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
     },
     progressHeader: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: '16px'
+      marginBottom: '8px'
     },
     progressText: {
-      fontSize: '0.95rem',
-      fontWeight: '600',
-      color: 'rgba(255, 255, 255, 0.9)'
+      fontSize: '0.875rem',
+      fontWeight: '500',
+      color: '#666'
     },
     progressBarContainer: {
       width: '100%',
-      backgroundColor: 'rgba(255, 255, 255, 0.2)',
-      borderRadius: '12px',
-      height: '12px',
-      overflow: 'hidden'
+      backgroundColor: '#e5e5e5',
+      borderRadius: '4px',
+      height: '8px'
     },
     progressBar: {
-      height: '12px',
-      background: 'linear-gradient(90deg, #ff6b6b 0%, #ffa726 50%, #66bb6a 100%)',
-      borderRadius: '12px',
-      transition: 'width 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-      boxShadow: '0 0 20px rgba(255, 255, 255, 0.3)'
+      height: '8px',
+      background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)',
+      borderRadius: '4px',
+      transition: 'width 0.3s ease'
     },
     questionCard: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      backdropFilter: 'blur(20px)',
-      borderRadius: '24px',
-      padding: '48px',
+      backgroundColor: 'white',
+      borderRadius: '16px',
+      padding: '32px',
       marginBottom: '32px',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.2)',
-      transform: 'translateY(0)',
-      transition: 'all 0.3s ease'
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
     },
     loadingContainer: {
       textAlign: 'center' as const,
-      padding: '64px 0',
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'center',
-      gap: '24px'
+      padding: '48px 0'
     },
     loadingText: {
       fontSize: '1.25rem',
       color: '#666',
-      fontWeight: '500'
+      marginTop: '16px'
     },
     questionTitle: {
-      fontSize: '2rem',
-      fontWeight: '700',
+      fontSize: '1.5rem',
+      fontWeight: '600',
       color: '#1a1a1a',
-      marginBottom: '24px',
-      lineHeight: '1.2'
+      marginBottom: '16px'
     },
     requiredText: {
       color: '#ef4444',
-      fontSize: '0.9rem',
-      marginBottom: '24px',
-      fontWeight: '500'
+      fontSize: '0.875rem',
+      marginBottom: '16px'
     },
     inputContainer: {
-      marginBottom: '40px'
+      marginBottom: '32px'
     },
     textInput: {
       width: '100%',
-      padding: '20px 24px',
-      border: '2px solid #e5e7eb',
-      borderRadius: '16px',
+      padding: '16px',
+      border: '2px solid #e5e5e5',
+      borderRadius: '8px',
       fontSize: '1.125rem',
       outline: 'none',
-      transition: 'all 0.3s ease',
-      boxSizing: 'border-box' as const,
-      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-      fontFamily: 'inherit'
+      transition: 'border-color 0.2s',
+      boxSizing: 'border-box' as const
     },
     select: {
       width: '100%',
-      padding: '20px 24px',
-      border: '2px solid #e5e7eb',
-      borderRadius: '16px',
+      padding: '16px',
+      border: '2px solid #e5e5e5',
+      borderRadius: '8px',
       fontSize: '1.125rem',
       outline: 'none',
-      transition: 'all 0.3s ease',
+      transition: 'border-color 0.2s',
       boxSizing: 'border-box' as const,
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-      fontFamily: 'inherit',
-      cursor: 'pointer'
+      backgroundColor: 'white'
     },
     multiselectContainer: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-      gap: '16px',
-      padding: '16px'
+      display: 'flex',
+      flexDirection: 'column' as const,
+      gap: '12px'
     },
     checkboxLabel: {
       display: 'flex',
       alignItems: 'center',
       gap: '12px',
-      cursor: 'pointer',
-      padding: '12px 16px',
-      borderRadius: '12px',
-      transition: 'all 0.2s ease',
-      backgroundColor: 'rgba(248, 250, 252, 0.8)',
-      border: '1px solid rgba(226, 232, 240, 0.5)'
+      cursor: 'pointer'
     },
     checkbox: {
       width: '20px',
       height: '20px',
-      accentColor: '#667eea',
-      cursor: 'pointer'
+      accentColor: '#3b82f6'
     },
     checkboxText: {
-      fontSize: '1.1rem',
-      fontWeight: '500',
-      color: '#374151'
+      fontSize: '1.125rem'
     },
     radioContainer: {
       display: 'flex',
-      gap: '32px',
-      justifyContent: 'center'
+      gap: '24px'
     },
     radioLabel: {
       display: 'flex',
       alignItems: 'center',
       gap: '12px',
-      cursor: 'pointer',
-      padding: '16px 32px',
-      borderRadius: '16px',
-      transition: 'all 0.2s ease',
-      backgroundColor: 'rgba(248, 250, 252, 0.8)',
-      border: '2px solid rgba(226, 232, 240, 0.5)',
-      minWidth: '120px',
-      justifyContent: 'center'
+      cursor: 'pointer'
     },
     radio: {
       width: '20px',
       height: '20px',
-      accentColor: '#667eea',
-      cursor: 'pointer'
+      accentColor: '#3b82f6'
     },
     radioText: {
-      fontSize: '1.125rem',
-      fontWeight: '600',
-      color: '#374151'
+      fontSize: '1.125rem'
     },
     errorContainer: {
       backgroundColor: '#fef2f2',
-      border: '2px solid #fecaca',
-      borderRadius: '16px',
-      padding: '20px',
+      border: '1px solid #fecaca',
+      borderRadius: '8px',
+      padding: '16px',
       marginBottom: '24px',
       display: 'flex',
-      alignItems: 'center',
-      boxShadow: '0 4px 6px rgba(239, 68, 68, 0.1)'
+      alignItems: 'center'
     },
     errorText: {
       color: '#dc2626',
-      marginLeft: '12px',
-      fontWeight: '500'
+      marginLeft: '8px'
     },
     navigationContainer: {
       display: 'flex',
@@ -700,257 +613,210 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
-      padding: '16px 32px',
-      color: '#6b7280',
+      padding: '12px 24px',
+      color: '#666',
       backgroundColor: 'transparent',
-      border: '2px solid rgba(107, 114, 128, 0.2)',
-      borderRadius: '16px',
+      border: 'none',
       cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      fontSize: '1rem',
-      fontWeight: '500'
+      transition: 'color 0.2s',
+      fontSize: '1rem'
     },
     nextButton: {
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+      background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)',
       color: 'white',
-      padding: '16px 40px',
-      borderRadius: '16px',
+      padding: '12px 32px',
+      borderRadius: '8px',
       border: 'none',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
-      transition: 'all 0.3s ease',
+      transition: 'transform 0.2s',
       fontSize: '1rem',
-      fontWeight: '600',
-      boxShadow: '0 8px 16px rgba(102, 126, 234, 0.3)'
+      fontWeight: '500'
     },
     footer: {
       textAlign: 'center' as const,
-      color: 'rgba(255, 255, 255, 0.7)',
-      fontSize: '1rem'
+      color: '#888'
     },
     reportContainer: {
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      position: 'relative' as const,
-      overflow: 'hidden'
+      background: 'linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%)'
     },
     reportCard: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      backdropFilter: 'blur(20px)',
-      borderRadius: '24px',
-      padding: '48px',
-      border: '1px solid rgba(255, 255, 255, 0.3)',
-      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)'
+      backgroundColor: 'white',
+      borderRadius: '16px',
+      padding: '32px',
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)'
     },
     reportHeader: {
       textAlign: 'center' as const,
-      marginBottom: '48px'
+      marginBottom: '32px'
     },
     successIcon: {
-      width: '80px',
-      height: '80px',
-      background: 'linear-gradient(135deg, #10b981 0%, #34d399 100%)',
+      width: '64px',
+      height: '64px',
+      backgroundColor: '#f0fdf4',
       borderRadius: '50%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      margin: '0 auto 24px',
-      boxShadow: '0 10px 30px rgba(16, 185, 129, 0.3)'
+      margin: '0 auto 16px'
     },
     reportTitle: {
-      fontSize: '2.5rem',
-      fontWeight: '800',
+      fontSize: '1.875rem',
+      fontWeight: 'bold',
       color: '#1a1a1a',
-      marginBottom: '12px',
-      lineHeight: '1.2'
+      marginBottom: '8px'
     },
     reportSubtitle: {
-      color: '#6b7280',
-      fontSize: '1.2rem'
+      color: '#666'
     },
     scoreCard: {
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      borderRadius: '20px',
-      padding: '40px',
+      background: 'linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%)',
+      borderRadius: '12px',
+      padding: '32px',
       color: 'white',
-      marginBottom: '40px',
+      marginBottom: '32px',
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center',
-      boxShadow: '0 20px 40px rgba(102, 126, 234, 0.3)',
-      position: 'relative' as const,
-      overflow: 'hidden'
+      alignItems: 'center'
     },
     productInfo: {
       display: 'flex',
-      flexDirection: 'column' as const,
-      flex: 1
+      flexDirection: 'column' as const
     },
     productName: {
-      fontSize: '2rem',
-      fontWeight: '700',
-      marginBottom: '8px',
-      textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+      fontSize: '1.5rem',
+      fontWeight: 'bold',
+      marginBottom: '8px'
     },
     productMeta: {
-      color: 'rgba(255, 255, 255, 0.8)',
-      fontSize: '1.1rem'
+      color: 'rgba(255, 255, 255, 0.8)'
     },
     scoreInfo: {
-      textAlign: 'right' as const,
-      display: 'flex',
-      flexDirection: 'column' as const,
-      alignItems: 'flex-end'
+      textAlign: 'right' as const
     },
     scoreNumber: {
-      fontSize: '4rem',
-      fontWeight: '900',
-      lineHeight: '1',
-      textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+      fontSize: '2.5rem',
+      fontWeight: 'bold'
     },
     scoreLabel: {
-      color: 'rgba(255, 255, 255, 0.8)',
-      fontSize: '1.1rem',
-      marginTop: '4px'
+      color: 'rgba(255, 255, 255, 0.8)'
     },
     detailsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
       gap: '32px',
-      marginBottom: '40px'
+      marginBottom: '32px'
     },
     detailsCard: {
-      background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-      borderRadius: '20px',
-      padding: '32px',
-      border: '1px solid rgba(226, 232, 240, 0.5)',
-      boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
-      transition: 'transform 0.2s ease'
+      backgroundColor: '#f9f9f9',
+      borderRadius: '12px',
+      padding: '24px'
     },
     recommendationsCard: {
-      background: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
-      borderRadius: '20px',
-      padding: '32px',
-      border: '1px solid rgba(251, 191, 36, 0.2)',
-      boxShadow: '0 4px 6px rgba(251, 191, 36, 0.1)',
-      transition: 'transform 0.2s ease'
+      backgroundColor: '#fefbf0',
+      borderRadius: '12px',
+      padding: '24px'
     },
     cardTitle: {
-      fontSize: '1.5rem',
-      fontWeight: '700',
-      marginBottom: '24px',
+      fontSize: '1.25rem',
+      fontWeight: '600',
+      marginBottom: '16px',
       display: 'flex',
       alignItems: 'center',
-      gap: '12px',
-      color: '#1f2937'
+      gap: '8px'
     },
     detailsList: {
       display: 'flex',
       flexDirection: 'column' as const,
-      gap: '16px'
+      gap: '12px'
     },
     detailItem: {
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'flex-start',
-      padding: '12px 0',
-      borderBottom: '1px solid rgba(226, 232, 240, 0.5)'
+      alignItems: 'flex-start'
     },
     detailLabel: {
-      fontWeight: '600',
-      color: '#6b7280',
+      fontWeight: '500',
+      color: '#666',
       textTransform: 'capitalize' as const,
-      minWidth: '140px',
-      fontSize: '0.95rem'
+      minWidth: '120px'
     },
     detailValue: {
-      color: '#1f2937',
+      color: '#1a1a1a',
       textAlign: 'right' as const,
-      flex: 1,
-      fontWeight: '500'
+      flex: 1
     },
     recommendationsList: {
       display: 'flex',
       flexDirection: 'column' as const,
-      gap: '16px'
+      gap: '8px'
     },
     recommendationItem: {
       display: 'flex',
       alignItems: 'flex-start',
-      gap: '16px',
-      padding: '16px',
-      backgroundColor: 'rgba(255, 255, 255, 0.6)',
-      borderRadius: '12px',
-      border: '1px solid rgba(251, 191, 36, 0.2)'
+      gap: '12px'
     },
     recommendationNumber: {
-      width: '32px',
-      height: '32px',
-      background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+      width: '24px',
+      height: '24px',
+      backgroundColor: '#fbbf24',
       borderRadius: '50%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: '0.9rem',
-      fontWeight: '700',
-      color: 'white',
+      fontSize: '0.875rem',
+      fontWeight: '600',
       flexShrink: 0,
-      boxShadow: '0 2px 4px rgba(245, 158, 11, 0.3)'
+      marginTop: '2px'
     },
     recommendationText: {
       color: '#374151',
-      lineHeight: '1.6',
-      fontSize: '1rem'
+      lineHeight: '1.5'
     },
     actionsContainer: {
       display: 'flex',
       justifyContent: 'center',
-      gap: '20px',
-      flexWrap: 'wrap' as const
+      gap: '16px'
     },
     downloadButton: {
-      background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+      backgroundColor: '#3b82f6',
       color: 'white',
-      padding: '16px 40px',
-      borderRadius: '16px',
+      padding: '12px 32px',
+      borderRadius: '8px',
       border: 'none',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
-      gap: '12px',
-      transition: 'all 0.3s ease',
-      fontSize: '1.1rem',
-      fontWeight: '600',
-      boxShadow: '0 8px 16px rgba(16, 185, 129, 0.3)'
+      gap: '8px',
+      transition: 'background-color 0.2s',
+      fontSize: '1rem'
     },
     newAnalysisButton: {
-      background: 'linear-gradient(135deg, #6b7280 0%, #4b5563 100%)',
+      backgroundColor: '#6b7280',
       color: 'white',
-      padding: '16px 40px',
-      borderRadius: '16px',
+      padding: '12px 32px',
+      borderRadius: '8px',
       border: 'none',
       cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      fontSize: '1.1rem',
-      fontWeight: '600',
-      boxShadow: '0 8px 16px rgba(107, 114, 128, 0.3)'
+      transition: 'background-color 0.2s',
+      fontSize: '1rem'
     }
   };
 
   if (reportGenerated && reportData) {
     return (
       <div style={styles.reportContainer}>
-        <div style={styles.backgroundPattern}></div>
         <div style={styles.innerContainer}>
           <div style={styles.reportCard}>
             <div style={styles.reportHeader}>
               <div style={styles.successIcon}>
-                <Check size={40} color="white" />
+                <Check size={32} color="#22c55e" />
               </div>
               <h1 style={styles.reportTitle}>
-                Transparency Report Generated
+                Product Transparency Report Generated
               </h1>
               <p style={styles.reportSubtitle}>Your comprehensive product analysis is ready</p>
             </div>
@@ -964,24 +830,12 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
                 <div style={styles.scoreNumber}>{reportData.score}%</div>
                 <div style={styles.scoreLabel}>Transparency Score</div>
               </div>
-              <div style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                opacity: '0.1'
-              }}>
-                <Shield size={60} />
-              </div>
             </div>
 
             <div style={styles.detailsGrid}>
-              <div 
-                style={styles.detailsCard}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
+              <div style={styles.detailsCard}>
                 <h3 style={styles.cardTitle}>
-                  <FileText size={24} />
+                  <FileText size={20} />
                   Product Details
                 </h3>
                 <div style={styles.detailsList}>
@@ -992,20 +846,15 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
                       </span>
                       <span style={styles.detailValue}>
                         {Array.isArray(value) ? value.join(', ') : String(value).substring(0, 30)}
-                        {String(value).length > 30 ? '...' : ''}
                       </span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div 
-                style={styles.recommendationsCard}
-                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
-                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-              >
+              <div style={styles.recommendationsCard}>
                 <h3 style={styles.cardTitle}>
-                  <Sparkles size={24} />
+                  <AlertCircle size={20} />
                   Recommendations
                 </h3>
                 <div style={styles.recommendationsList}>
@@ -1025,14 +874,8 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
               <button
                 onClick={downloadReport}
                 style={styles.downloadButton}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(16, 185, 129, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(16, 185, 129, 0.3)';
-                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2563eb'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#3b82f6'}
               >
                 <Download />
                 <span>Download Report</span>
@@ -1046,14 +889,8 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
                   setReportData(null);
                 }}
                 style={styles.newAnalysisButton}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 12px 24px rgba(107, 114, 128, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(107, 114, 128, 0.3)';
-                }}
+                onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#4b5563'}
+                onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#6b7280'}
               >
                 New Analysis
               </button>
@@ -1066,7 +903,6 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
 
   return (
     <div style={styles.container}>
-      <div style={styles.backgroundPattern}></div>
       <div style={styles.innerContainer}>
         {/* Header */}
         <div style={styles.header}>
@@ -1077,9 +913,7 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
             Building trust through intelligent transparency analysis
           </p>
           <p style={styles.tagline}>
-            <Shield size={20} />
             Health • Wisdom • Virtue
-            <Sparkles size={20} />
           </p>
         </div>
 
@@ -1107,7 +941,7 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
         <div style={styles.questionCard}>
           {loading ? (
             <div style={styles.loadingContainer}>
-              <Loader2 size={48} color="#667eea" />
+              <Loader2 size={48} color="#3b82f6" />
               <p style={styles.loadingText}>
                 {step < initialQuestions.length ? 
                   'Generating intelligent follow-up questions...' : 
@@ -1146,19 +980,11 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
                     opacity: step === 0 ? 0.5 : 1,
                     cursor: step === 0 ? 'not-allowed' : 'pointer'
                   }}
-                  onMouseEnter={(e) => {
-                    if (step !== 0) {
-                      e.currentTarget.style.backgroundColor = 'rgba(107, 114, 128, 0.1)';
-                      e.currentTarget.style.borderColor = 'rgba(107, 114, 128, 0.4)';
-                      e.currentTarget.style.color = '#374151';
-                    }
+                  onMouseOver={(e) => {
+                    if (step !== 0) e.currentTarget.style.color = '#1a1a1a';
                   }}
-                  onMouseLeave={(e) => {
-                    if (step !== 0) {
-                      e.currentTarget.style.backgroundColor = 'transparent';
-                      e.currentTarget.style.borderColor = 'rgba(107, 114, 128, 0.2)';
-                      e.currentTarget.style.color = '#6b7280';
-                    }
+                  onMouseOut={(e) => {
+                    if (step !== 0) e.currentTarget.style.color = '#666';
                   }}
                 >
                   <ChevronLeft />
@@ -1173,17 +999,11 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
                     opacity: loading ? 0.5 : 1,
                     cursor: loading ? 'not-allowed' : 'pointer'
                   }}
-                  onMouseEnter={(e) => {
-                    if (!loading) {
-                      e.currentTarget.style.transform = 'translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 12px 24px rgba(102, 126, 234, 0.4)';
-                    }
+                  onMouseOver={(e) => {
+                    if (!loading) e.currentTarget.style.transform = 'scale(1.05)';
                   }}
-                  onMouseLeave={(e) => {
-                    if (!loading) {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(102, 126, 234, 0.3)';
-                    }
+                  onMouseOut={(e) => {
+                    if (!loading) e.currentTarget.style.transform = 'scale(1)';
                   }}
                 >
                   <span>
@@ -1198,69 +1018,28 @@ ${reportData.recommendations.map((rec: string, i: number) => `${i + 1}. ${rec}`)
 
         {/* Footer */}
         <div style={styles.footer}>
-          <p>✨ Powered by AI-driven transparency analysis ✨</p>
+          <p>Powered by AI-driven transparency analysis</p>
         </div>
       </div>
 
-      {/* CSS Animations and Hover Effects */}
+      {/* CSS Animations */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-          
           @keyframes spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
           }
           
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-          }
-          
           input:focus {
-            border-color: #667eea !important;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-            transform: scale(1.02);
+            border-color: #3b82f6 !important;
           }
           
           select:focus {
-            border-color: #667eea !important;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
-            transform: scale(1.02);
+            border-color: #3b82f6 !important;
           }
           
           button:disabled {
             cursor: not-allowed !important;
-          }
-          
-          label:hover {
-            background-color: rgba(102, 126, 234, 0.05) !important;
-            border-color: rgba(102, 126, 234, 0.2) !important;
-            transform: translateY(-1px);
-          }
-          
-          input[type="radio"]:checked + span {
-            color: #667eea !important;
-            font-weight: 700 !important;
-          }
-          
-          input[type="checkbox"]:checked + span {
-            color: #667eea !important;
-            font-weight: 600 !important;
-          }
-          
-          .question-card-hover:hover {
-            transform: translateY(-4px) !important;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15) !important;
-          }
-          
-          * {
-            box-sizing: border-box;
-          }
-          
-          body {
-            margin: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
           }
         `
       }} />
