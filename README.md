@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README.md
 # Product Transparency Platform
 
@@ -137,3 +138,6 @@ npm install
 npm start
 
 
+=======
+# Product_Transparency
+>>>>>>> f98e239261631cac2373a8db7b1c4840879e59ef
